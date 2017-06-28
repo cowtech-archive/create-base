@@ -1,0 +1,32 @@
+{
+  "name": "@cowtech/create-base",
+  "version": "0.0.0",
+  "description": "Base package to @cowtech/create-* packages",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "postpublish": "git push origin && git push origin -f --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cowtech/create-base"
+  },
+  "keywords": [
+    "cowtech",
+    "create"
+  ],
+  "author": "Shogun <shogun@cowtech.it>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cowtech/create-base/issues"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "find": "~0.2",
+    "fs-extra": "~3.0"
+  }
+}
