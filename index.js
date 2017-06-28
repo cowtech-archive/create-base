@@ -3,7 +3,8 @@
 const fs = require("fs-extra");
 const path = require("path");
 const find = require("find");
-const executableName = process.argv[1].split("/").pop();
+const templateBase = path.dirname(process.argv[1]);
+const executableName = path.basename(templateBase);
 
 const titleize = function(subject){
   return subject.trim().replace(/[-_]/g, " ").replace(/(^|\s)(\w)/g, match => match.trim().toUpperCase());
@@ -98,7 +99,7 @@ const execute = async function(){
   try{
     // Load the configuration
     const base = process.argv[2];
-    const template = path.resolve(__dirname, "template");
+    const template = path.resolve(templateBase, "template");
     const root = path.resolve(process.cwd(), base);
     const configuration = loadConfiguration(base, root, template, process.argv[3]);
 
