@@ -99,7 +99,7 @@ const execute = async function(){
   try{
     // Load the configuration
     const base = process.argv[2];
-    const template = path.resolve(templateBase, "template");
+    const template = process.env.TEMPLATE || path.resolve(templateBase, "template");
     const root = path.resolve(process.cwd(), base);
     const configuration = loadConfiguration(base, root, template, process.argv[3]);
 
@@ -109,7 +109,7 @@ const execute = async function(){
     const padding = total.toString().length;
 
     for(let current = 0; current < total; current++)
-      await compileFile(configuration, files[current], current, total, padding);
+      await compileFile(configuration, files[current], current + 1, total, padding);
   }catch(e){
     showError(e);
   }
