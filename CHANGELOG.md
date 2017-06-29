@@ -1,3 +1,7 @@
+### 2017-06-29 / 0.0.4
+
+* Added missing files in package.json
+
 ### 2017-06-29 / 0.0.3
 
 * Added executable to execute on any folder.
