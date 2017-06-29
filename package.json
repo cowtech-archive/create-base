@@ -4,6 +4,7 @@
   "description": "Base package to @cowtech/create-* packages.",
   "main": "index.js",
   "files": [
+    "bin.js",
     "index.js"
   ],
   "bin": {
