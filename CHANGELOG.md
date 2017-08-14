@@ -1,3 +1,7 @@
+### 2017-08-14 / 0.1.2
+
+* Minor development fix.
+
 ### 2017-08-14 / 0.1.1
 
 * Added linting.
