@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-const fs = require("fs-extra");
-const path = require("path");
-const find = require("find");
+const fs = require('fs-extra');
+const path = require('path');
+const find = require('find');
 const templateBase = path.dirname(process.argv[1]);
 const executableName = path.basename(templateBase);
 
 const titleize = function(subject){
-  return subject.trim().replace(/[-_]/g, " ").replace(/(^|\s)(\w)/g, match => match.trim().toUpperCase());
+  return subject.trim().replace(/[-_]/g, ' ').replace(/(^|\s)(\w)/g, match => match.trim().toUpperCase());
 };
 
 const compileTemplate = function(target, pattern, configuration){
-  return target.replace(pattern, (_u, key) => configuration[key] || "");
+  return target.replace(pattern, (_u, key) => configuration[key] || '');
 };
 
 const showSuccess = function(message){
@@ -33,14 +33,14 @@ const loadConfiguration = function(base, root, template, configurationFile){
     template,
     name: path.basename(base),
     namespace: titleize(base),
-    env: base.toUpperCase().replace("-", "_"),
+    env: base.toUpperCase().replace('-', '_'),
     year: new Date().getFullYear(),
-    author: "Shogun",
-    authorEmail: "shogun@cowtech.it",
-    githubUser: "ShogunPanda",
+    author: 'Shogun',
+    authorEmail: 'shogun@cowtech.it',
+    githubUser: 'ShogunPanda',
     summary: null,
     description: null,
-    templateExtension: ".ctt"
+    templateExtension: '.ctt'
   };
 
   if(configurationFile){
@@ -50,7 +50,7 @@ const loadConfiguration = function(base, root, template, configurationFile){
       if(!e.message.match(/^Cannot find module/))
         throw e;
 
-     showWarning(`Cannot load file \x1b[1m${configurationFile}\x1b[22m. Will continue with default configuration.`);
+      showWarning(`Cannot load file \x1b[1m${configurationFile}\x1b[22m. Will continue with default configuration.`);
     }
   }
 
@@ -68,8 +68,8 @@ const loadConfiguration = function(base, root, template, configurationFile){
     configuration.docsUrl = `https://${configuration.githubUser.toLowerCase()}.github.io/${configuration.name}`;
 
   // Set expression for template compilation
-  configuration.fileNameRegex = new RegExp(`(?:_ctt@(${Object.keys(configuration).join("|")}))`, "gm");
-  configuration.fileContentsRegex = new RegExp(`(?:\\{\\{(${Object.keys(configuration).join("|")})\\}\\})`, "gm");
+  configuration.fileNameRegex = new RegExp(`(?:_ctt@(${Object.keys(configuration).join('|')}))`, 'gm');
+  configuration.fileContentsRegex = new RegExp(`(?:\\{\\{(${Object.keys(configuration).join('|')})\\}\\})`, 'gm');
 
   return configuration;
 };
@@ -78,28 +78,28 @@ const compileFile = async function(configuration, file, current, total, padding)
   const fullPath = compileTemplate(
     file
       .replace(configuration.template, configuration.root)
-      .replace(new RegExp(`(?:${configuration.templateExtension})$`), ""),
+      .replace(new RegExp(`(?:${configuration.templateExtension})$`), ''),
     configuration.fileNameRegex, configuration
   );
 
   const relativePath = fullPath.replace(configuration.root, configuration.base);
   const compile = file.endsWith(configuration.templateExtension);
-  let content = await fs.readFile(file, "utf-8");
+  let content = await fs.readFile(file, 'utf-8');
 
   if(compile)
     content = compileTemplate(content, configuration.fileContentsRegex, configuration);
 
   await fs.mkdirp(path.dirname(fullPath));
-  await fs.writeFile(fullPath, content, "utf-8");
+  await fs.writeFile(fullPath, content, 'utf-8');
 
-  showSuccess(`[${current.toString().padStart(padding, "0")}/${total}] Created file \x1b[1m\x1b[34m${relativePath}\x1b[0m\x1b[22m.`);
+  showSuccess(`[${current.toString().padStart(padding, '0')}/${total}] Created file \x1b[1m\x1b[34m${relativePath}\x1b[0m\x1b[22m.`);
 };
 
 const execute = async function(){
   try{
     // Load the configuration
     const base = process.argv[2];
-    const template = process.env.TEMPLATE || path.resolve(templateBase, "template");
+    const template = process.env.TEMPLATE || path.resolve(templateBase, 'template');
     const root = path.resolve(process.cwd(), base);
     const configuration = loadConfiguration(base, root, template, process.argv[3]);
 
@@ -113,6 +113,6 @@ const execute = async function(){
   }catch(e){
     showError(e);
   }
-}
+};
 
 module.exports = execute;
