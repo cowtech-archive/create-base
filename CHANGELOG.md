@@ -1,3 +1,7 @@
+### 2017-08-14 / 0.0.5
+
+* Updated dependencies.
+
 ### 2017-06-29 / 0.0.4
 
 * Added missing files in package.json
