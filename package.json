@@ -1,6 +1,6 @@
 {
   "name": "@cowtech/create-base",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "Base package to @cowtech/create-* packages.",
   "main": "index.js",
   "files": [
@@ -11,7 +11,7 @@
     "create-cowtech-base": "./bin.js"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint bin.js index.js",
+    "lint": "eslint bin.js index.js",
     "postpublish": "git push origin && git push origin -f --tags"
   },
   "repository": {
