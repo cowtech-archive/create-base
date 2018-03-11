@@ -32,11 +32,10 @@
   },
   "dependencies": {
     "find": "~0.2",
-    "fs-extra": "~4.0"
+    "fs-extra": "~5.0"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "~4.4",
-    "@cowtech/package-utils": "~0.2",
-    "eslint": "~4.4"
+    "@cowtech/eslint-config": "~4.18",
+    "@cowtech/package-utils": "~0.2"
   }
 }

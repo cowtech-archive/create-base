@@ -1,3 +1,7 @@
+### 2018-03-11 / 0.2.1
+
+* Updated dependencies.
+
 ### 2018-03-11 / 0.2.0
 
 * Bumped version.
