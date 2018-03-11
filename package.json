@@ -1,6 +1,6 @@
 {
   "name": "@cowtech/create-base",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Base package to @cowtech/create-* packages.",
   "main": "index.js",
   "files": [
