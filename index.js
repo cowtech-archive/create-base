@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const find = require('find');
-const templateBase = path.dirname(process.argv[1]);
+const templateBase = path.dirname(fs.realpathSync(process.argv[1]));
 const executableName = path.basename(templateBase);
 
 const titleize = function(subject){
