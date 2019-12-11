@@ -1,6 +1,8 @@
 # @cowtech/create-base
 
-Base package to @cowtech/create-* packages.
+## END OF DEVELOPMENT NOTICE - This package has been discontinued
+
+Base package to @cowtech/create-\* packages.
 
 ## Copyright
 
